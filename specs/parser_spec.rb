@@ -13,11 +13,11 @@ RSpec.describe Parser do
       expect { Parser.new('file.pdf') }.to raise_error('Wrong file extesion must be .log')
     end
 
-    it "should have data in memory" do
+    it "should load the data" do
       data = Parser.new(filename)
-      count = data.counter()
+      count = data.records.count
       expect(count).to be > 0
     end
-    
+
   end
 end

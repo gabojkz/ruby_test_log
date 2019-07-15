@@ -7,6 +7,7 @@ order = ARGV[1] || 'desc'
 unique = ARGV[2] || false
 
 class Parser
+  attr_accessor :records
 
   def initialize(filename)
     raise ArgumentError, 'Usage: ruby parse.rb log_file [order=desc] [unique=false]' unless filename
@@ -19,12 +20,13 @@ class Parser
   end
   
   def show(order, unique)
+    puts "\n"
+    puts "Will order #{order} .."
+    puts "Will show unique values? #{unique} .."
+    puts "\n"
+
     register = Register.new(@records, order, unique)
     register.print_list()
-  end
-
-  def counter
-    return @records.count
   end
 
   private
